@@ -1,6 +1,20 @@
-import telebot
-import os
+import json
 from datetime import datetime
+
+STATS_FILE = "stats.json"
+
+def load_stats():
+    try:
+        with open(STATS_FILE, "r") as f:
+            return json.load(f)
+    except:
+        return {"users": [], "tasks": 0, "notes": 0}
+
+def save_stats(stats):
+    with open(STATS_FILE, "w") as f:
+        json.dump(stats, f, indent=4)
+        import telebot
+import os
 
 TOKEN = os.getenv("TOKEN")
 bot = telebot.TeleBot(TOKEN, parse_mode="MarkdownV2")
