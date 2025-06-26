@@ -1,3 +1,5 @@
+import telebot
+import os
 import json
 from datetime import datetime
 
@@ -13,8 +15,6 @@ def load_stats():
 def save_stats(stats):
     with open(STATS_FILE, "w") as f:
         json.dump(stats, f, indent=4)
-        import telebot
-import os
 
 TOKEN = os.getenv("TOKEN")
 bot = telebot.TeleBot(TOKEN, parse_mode="MarkdownV2")
